@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+- try deploy clean architecture in flutter 
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
