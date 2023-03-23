@@ -4,4 +4,8 @@ class AppStrings {
   static const String noRouteFound = "No Route Found";
 
   static const String ok = "OK";
+  static const String cachedRandomQuote = "CACHED_RANDOM_QUOTE";
+
+  static const String contentType = "Conetent-Type";
+  static const String applicationJson = "application/json";
 }
