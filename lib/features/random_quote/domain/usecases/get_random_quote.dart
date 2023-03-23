@@ -2,8 +2,8 @@ import 'dart:collection';
 
 import 'package:clean_arch_demo/core/error/Failures.dart';
 import 'package:clean_arch_demo/core/usecases/usecase.dart';
-import 'package:clean_arch_demo/features/favourite_quote/domain/entities/quote.dart';
-import 'package:clean_arch_demo/features/favourite_quote/domain/repositories/quote_repository.dart';
+import 'package:clean_arch_demo/features/random_quote/domain/entities/quote.dart';
+import 'package:clean_arch_demo/features/random_quote/domain/repositories/quote_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
