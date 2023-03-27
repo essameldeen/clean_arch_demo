@@ -1,9 +1,11 @@
 import 'package:clean_arch_demo/core/utils/app_colors.dart';
+import 'package:clean_arch_demo/features/random_quote/domain/entities/quote.dart';
 
 import 'package:flutter/material.dart';
 
 class QuoteConetent extends StatelessWidget {
-  const QuoteConetent({super.key});
+  final Quote? quote;
+  const QuoteConetent({super.key, required this.quote});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class QuoteConetent extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "Essam mohamed hi this is first quo we get it from the api",
+            quote?.content ?? "Quote Content is Empty",
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
@@ -24,7 +26,7 @@ class QuoteConetent extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.all(15),
-            child: const Text("Essam Mohamed"),
+            child: Text(quote?.author ?? "No Auothor For This Quote"),
           )
         ],
       ),

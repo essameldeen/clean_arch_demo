@@ -8,4 +8,9 @@ class AppStrings {
 
   static const String contentType = "Conetent-Type";
   static const String applicationJson = "application/json";
+
+  static const String serverFailuer = "Server Failuer";
+  static const String cacheFailuer = "Cache Failuer";
+
+  static const String unexpectedFiluer = "Unexpected Failuer";
 }
