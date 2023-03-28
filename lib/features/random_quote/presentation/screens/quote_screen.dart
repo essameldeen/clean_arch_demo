@@ -1,6 +1,6 @@
 import 'package:clean_arch_demo/core/utils/app_colors.dart';
 import 'package:clean_arch_demo/core/utils/app_strings.dart';
-import 'package:clean_arch_demo/core/widgets/error_widget.dart';
+
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/widgets/quote_content.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,9 @@ class QuoteScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text(AppStrings.appName),
           ),
-          body: ErrorWidgetScreen()),
+          body: QuoteConetent(
+            quote: RandomQuoteCubit.get(context).quoteData,
+          )),
       onRefresh: () => RandomQuoteCubit.get(context).getRandomQuote(),
     );
   }
