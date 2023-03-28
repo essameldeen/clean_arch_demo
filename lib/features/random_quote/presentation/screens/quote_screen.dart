@@ -1,5 +1,6 @@
 import 'package:clean_arch_demo/core/utils/app_colors.dart';
 import 'package:clean_arch_demo/core/utils/app_strings.dart';
+import 'package:clean_arch_demo/core/widgets/error_widget.dart';
 
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/widgets/quote_content.dart';
@@ -34,31 +35,37 @@ class QuoteScreen extends StatelessWidget {
             ),
           );
         } else if (state is RandomGetQuoteError) {
-          Text(state.error);
+          ErrorWidgetScreen(
+            onpress: () => RandomQuoteCubit.get(context).getRandomQuote(),
+          );
         }
       },
       builder: (context, state) {
         var quote = RandomQuoteCubit.get(context).quoteData;
-        return Column(
-          children: [
-            QuoteConetent(
-              quote: quote,
-            ),
-            InkWell(
-              onTap: () => {RandomQuoteCubit.get(context).getRandomQuote()},
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 15),
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AppColors.primary),
-                child: const Icon(
-                  Icons.refresh,
-                  size: 28,
-                  color: Colors.white,
-                ),
+        return Container(
+          height: 200.0,
+          width: 200.0,
+          child: Column(
+            children: [
+              QuoteConetent(
+                quote: quote,
               ),
-            )
-          ],
+              InkWell(
+                onTap: () => {RandomQuoteCubit.get(context).getRandomQuote()},
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: AppColors.primary),
+                  child: const Icon(
+                    Icons.refresh,
+                    size: 28,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            ],
+          ),
         );
       },
     );

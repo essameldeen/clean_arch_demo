@@ -1,5 +1,4 @@
 import 'package:clean_arch_demo/core/utils/app_strings.dart';
-import 'package:clean_arch_demo/features/favourite_quote/presentation/screens/favorutie_quote_screen.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/screens/quote_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ class Routes {
 // type =  Nameing Route
 final routes = {
   Routes.initialRoute: (context) => const QuoteScreen(),
-  Routes.favouriteQuoteRoute: (context) => const FavouriteQuoteScreen()
 };
 
 // type =  Generateing  Route is prefer
@@ -29,10 +27,6 @@ class AppRoutes {
                       di.serviceLocator<RandomQuoteCubit>()..getRandomQuote,
                   child: const QuoteScreen(),
                 )));
-
-      case Routes.favouriteQuoteRoute:
-        return MaterialPageRoute(
-            builder: ((contxt) => const FavouriteQuoteScreen()));
 
       default:
         return undefinedRoute();
