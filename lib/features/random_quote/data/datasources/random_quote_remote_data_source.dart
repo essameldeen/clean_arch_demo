@@ -11,7 +11,7 @@ abstract class RandomQuoteRemoteDataSource {
 }
 
 class RandomQuoteRemoteDataSourceImpl implements RandomQuoteRemoteDataSource {
-  http.Client client;
+  late http.Client client;
   RandomQuoteRemoteDataSourceImpl({required this.client});
   @override
   Future<QuoteModel> getRandomQuote() async {
