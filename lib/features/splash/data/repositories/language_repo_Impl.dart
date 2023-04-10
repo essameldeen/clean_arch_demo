@@ -9,7 +9,7 @@ import '../../domain/repositories/language_repo.dart';
 class LanguageRepoImpl extends LanugaugeRepo {
   final LanguageLocalDataSource localDataSource;
 
-  LanguageRepoImpl(this.localDataSource);
+  LanguageRepoImpl({required this.localDataSource});
   @override
   Future<Either<Failuer, bool>> changeLanugauge(
       {required String langCode}) async {

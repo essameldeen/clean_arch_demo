@@ -8,6 +8,12 @@ import 'package:clean_arch_demo/features/random_quote/data/repositories/quote_re
 import 'package:clean_arch_demo/features/random_quote/domain/repositories/quote_repository.dart';
 import 'package:clean_arch_demo/features/random_quote/domain/usecases/get_random_quote.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
+import 'package:clean_arch_demo/features/splash/data/datasources/lang_local_data_source.dart';
+import 'package:clean_arch_demo/features/splash/data/repositories/language_repo_Impl.dart';
+import 'package:clean_arch_demo/features/splash/domain/repositories/language_repo.dart';
+import 'package:clean_arch_demo/features/splash/domain/usecases/change_locale_language.dart';
+import 'package:clean_arch_demo/features/splash/domain/usecases/get_language_save.dart';
+import 'package:clean_arch_demo/features/splash/presentation/cubit/local_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -23,9 +29,19 @@ Future<void> init() async {
   serviceLocator.registerFactory(
       () => RandomQuoteCubit(getRandomQuoteUseCase: serviceLocator()));
 
+  serviceLocator.registerFactory(() => LocalCubit(
+      getLanguageSavedUseCase: serviceLocator(),
+      changeLocaleLanuguageUseCase: serviceLocator()));
+
   //usecase
   serviceLocator.registerLazySingleton(
       () => GetRandomQuoteUseCase(quoteRepository: serviceLocator()));
+
+  serviceLocator.registerLazySingleton(
+      () => GetLanguageSavedUseCase(repo: serviceLocator()));
+
+  serviceLocator.registerLazySingleton(
+      () => ChangeLocaleLanuguageUseCase(lanugaugeRepo: serviceLocator()));
 
   // repo
 
@@ -35,6 +51,9 @@ Future<void> init() async {
           localDataSource: serviceLocator(),
           remoteDataSource: serviceLocator()));
 
+  serviceLocator.registerLazySingleton<LanugaugeRepo>(
+      () => LanguageRepoImpl(localDataSource: serviceLocator()));
+
   // Data Sources
 
   serviceLocator.registerLazySingleton<RandomQuoteLocalDataSource>(() =>
@@ -42,6 +61,10 @@ Future<void> init() async {
 
   serviceLocator.registerLazySingleton<RandomQuoteRemoteDataSource>(
       () => RandomQuoteRemoteDataSourceImpl(apiConsumer: serviceLocator()));
+
+  serviceLocator.registerLazySingleton<LanguageLocalDataSource>(
+      () => LanguageLocalDataSourceImpl(sharedPreferences: serviceLocator()));
+
   //! core
 
   serviceLocator.registerLazySingleton<NetworkInfo>(

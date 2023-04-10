@@ -8,16 +8,16 @@ abstract class LanguageLocalDataSource {
 }
 
 class LanguageLocalDataSourceImpl extends LanguageLocalDataSource {
-  final SharedPreferences preferences;
+  final SharedPreferences sharedPreferences;
 
-  LanguageLocalDataSourceImpl(this.preferences);
+  LanguageLocalDataSourceImpl({required this.sharedPreferences});
   @override
   Future<bool> changeLanugauge({required String langCode}) async =>
-      await preferences.setString(AppStrings.local, langCode);
+      await sharedPreferences.setString(AppStrings.local, langCode);
 
   @override
   Future<String?> getSavedLang() async =>
-      preferences.containsKey(AppStrings.local)
-          ? preferences.getString(AppStrings.local)
+      sharedPreferences.containsKey(AppStrings.local)
+          ? sharedPreferences.getString(AppStrings.local)
           : AppStrings.englishCode;
 }

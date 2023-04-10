@@ -1,5 +1,5 @@
+import 'package:clean_arch_demo/config/locale/app_localizations.dart';
 import 'package:clean_arch_demo/core/utils/app_colors.dart';
-import 'package:clean_arch_demo/core/utils/app_strings.dart';
 import 'package:clean_arch_demo/core/widgets/error_widget.dart';
 
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
@@ -7,6 +7,8 @@ import 'package:clean_arch_demo/features/random_quote/presentation/widgets/quote
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../../../splash/presentation/cubit/local_cubit.dart';
 
 class QuoteScreen extends StatelessWidget {
   const QuoteScreen({super.key});
@@ -16,7 +18,20 @@ class QuoteScreen extends StatelessWidget {
     return RefreshIndicator(
       child: Scaffold(
           appBar: AppBar(
-            title: const Text(AppStrings.appName),
+            leading: IconButton(
+              icon: Icon(
+                Icons.translate_outlined,
+                color: AppColors.primary,
+              ),
+              onPressed: () {
+                if (AppLocalizations.of(context)!.isEnLocale) {
+                  LocalCubit.get(context).toArabic();
+                } else {
+                  LocalCubit.get(context).toEnglish();
+                }
+              },
+            ),
+            title: Text(AppLocalizations.of(context)!.translate("app_name")!),
           ),
           body: QuoteConetent(
             quote: RandomQuoteCubit.get(context).quoteData,

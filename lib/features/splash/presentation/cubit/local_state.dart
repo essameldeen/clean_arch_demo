@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 abstract class LocalState extends Equatable {
-  final Locale _local;
+  final Locale local;
 
-  const LocalState(this._local);
-  List<Object?> get props => [_local];
+  const LocalState(this.local);
+  List<Object?> get props => [local];
 }
 
 class LocalStateInital extends LocalState {
