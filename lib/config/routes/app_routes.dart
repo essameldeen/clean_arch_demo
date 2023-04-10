@@ -1,6 +1,7 @@
 import 'package:clean_arch_demo/core/utils/app_strings.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:clean_arch_demo/features/random_quote/presentation/screens/quote_screen.dart';
+import 'package:clean_arch_demo/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:clean_arch_demo/injection_container.dart' as di;
@@ -8,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Routes {
   static const String initialRoute = "/";
-  static const String favouriteQuoteRoute = "/favouriteQuote";
+  static const String randomQuoteRoute = "/randomQuote";
 }
 
 // type =  Nameing Route
@@ -21,6 +22,11 @@ class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initialRoute:
+        return MaterialPageRoute(builder: (contxt) {
+          return SplashScreen();
+        });
+
+      case Routes.randomQuoteRoute:
         return MaterialPageRoute(
             builder: ((contxt) => BlocProvider(
                   create: (context) =>

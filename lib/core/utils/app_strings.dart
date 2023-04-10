@@ -13,4 +13,8 @@ class AppStrings {
   static const String cacheFailuer = "Cache Failuer";
 
   static const String unexpectedFiluer = "Unexpected Failuer";
+
+  static const String englishCode = "en";
+  static const String arabicCode = "ar";
+  static const String local = "local";
 }
