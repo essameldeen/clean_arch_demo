@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class Routes {
   static const String initialRoute = "/";
   static const String randomQuoteRoute = "/randomQuote";
+  static const String randomQuoteRouteDescriptopn = "/randomQuoteDescription";
 }
 
 // type =  Nameing Route
